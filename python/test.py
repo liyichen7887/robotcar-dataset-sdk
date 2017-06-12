@@ -21,16 +21,16 @@ def getName(num):
 
 image_list = []
 idx = 1
-
-model = camera.CameraModel("/home/tusimple-sudo/robotcar-dataset-sdk/models/", "/home/tusimple-sudo/Downloads/sample/stereo/left/")
+path = "/home/tusimple-sudo/Downloads/2015-08-13-16-02-58/stereo/left/"
+model = camera.CameraModel("/home/tusimple-sudo/robotcar-dataset-sdk/models/", path)
 #path = "/home/tusimple-sudo/Downloads/sample/stereo/left/"
 #imagesList = listdir(path)
 #for image in imagesList:
-for filename in sorted(glob.glob('/home/tusimple-sudo/Downloads/sample/stereo/left/*.png')): 
+for filename in sorted(glob.glob(path + '*.png')): 
     im_arr = sdk_im.load_image(filename)
     im_arr = model.undistort(im_arr)
     im = Image.fromarray(im_arr)
     #filename_arr = filename.split("/")
     #filename = filename_arr[len(filename_arr)-1]
-    im.save("/home/tusimple-sudo/test_data/result/"+getName(idx)+'.png')
+    im.save("/home/tusimple-sudo/test_data/2015-08-13/"+getName(idx)+'.png')
     idx = idx + 1
