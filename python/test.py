@@ -1,9 +1,12 @@
 from PIL import Image
 import image as sdk_im
 import camera_model as camera
+import glob
 
-im_arr = sdk_im.load_image("/home/tusimple-sudo/Downloads/sample/stereo/left/1418381798076682.png")
-mode = CameraModel("../models/stereo_narrow_left.txt", "/home/tusimple-sudo/Downloads/sample/stereo/left/")
-im_arr = model.undistort(im_arr)
-im = Image.fromarray(im_arr)
-im.save("test.png")
+image_list = []
+model = CameraModel("/home/tusimple-sudo/robotcar-dataset-sdk/models/", "/home/tusimple-sudo/Downloads/sample/stereo/left/")
+for filename in glob.glob('/home/tusimple-sudo/Downloads/sample/stereo/left/*.png'): 
+    im_arr = sdk_im.load_image(filename)
+    im_arr = model.undistort(im_arr)
+    im = Image.fromarray(im_arr)
+    im.save("/home/tusimple-sudo/robotcar-dataset-sdk/pyton/result/%s" % filename)
