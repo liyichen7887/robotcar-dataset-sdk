@@ -28,5 +28,5 @@ for filename in glob.glob('/home/tusimple-sudo/Downloads/sample/stereo/left/*.pn
     im = Image.fromarray(im_arr)
     #filename_arr = filename.split("/")
     #filename = filename_arr[len(filename_arr)-1]
-    im.save("/home/tusimple-sudo/result/"+getName(idx)+'.png')
+    im.save("/home/tusimple-sudo/test_data/result/"+getName(idx)+'.png')
     idx = idx + 1
