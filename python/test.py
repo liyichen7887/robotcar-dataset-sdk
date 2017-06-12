@@ -2,6 +2,7 @@ from PIL import Image
 import image as sdk_im
 import camera_model as camera
 import glob
+from os import listdir
 
 def getName(num):
     strTmp = []
@@ -22,8 +23,11 @@ image_list = []
 idx = 1
 
 model = camera.CameraModel("/home/tusimple-sudo/robotcar-dataset-sdk/models/", "/home/tusimple-sudo/Downloads/sample/stereo/left/")
-for filename in glob.glob('/home/tusimple-sudo/Downloads/sample/stereo/left/*.png'): 
-    im_arr = sdk_im.load_image(filename)
+path = "/home/tusimple-sudo/Downloads/sample/stereo/left/"
+imagesList = listdir(path)
+for image in imagesList:
+#for filename in glob.glob('/home/tusimple-sudo/Downloads/sample/stereo/left/*.png'): 
+    im_arr = sdk_im.load_image(path+image)
     im_arr = model.undistort(im_arr)
     im = Image.fromarray(im_arr)
     #filename_arr = filename.split("/")
