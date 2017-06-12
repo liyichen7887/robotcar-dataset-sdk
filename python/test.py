@@ -23,11 +23,11 @@ image_list = []
 idx = 1
 
 model = camera.CameraModel("/home/tusimple-sudo/robotcar-dataset-sdk/models/", "/home/tusimple-sudo/Downloads/sample/stereo/left/")
-path = "/home/tusimple-sudo/Downloads/sample/stereo/left/"
-imagesList = listdir(path)
-for image in imagesList:
-#for filename in glob.glob('/home/tusimple-sudo/Downloads/sample/stereo/left/*.png'): 
-    im_arr = sdk_im.load_image(path+image)
+#path = "/home/tusimple-sudo/Downloads/sample/stereo/left/"
+#imagesList = listdir(path)
+#for image in imagesList:
+for filename in sorted(glob.glob('/home/tusimple-sudo/Downloads/sample/stereo/left/*.png')): 
+    im_arr = sdk_im.load_image(filename)
     im_arr = model.undistort(im_arr)
     im = Image.fromarray(im_arr)
     #filename_arr = filename.split("/")
